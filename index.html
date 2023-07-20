@@ -1,1 +1,61 @@
-<img src="rubias.png" alt="lol">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="cat" src="cat.jpg" alt="">
+</body>
+</html>
+<style>
+
+    body, html {
+        margin: 0;
+        overflow: hidden;
+    }
+
+    img {
+        position: absolute;
+        height: 20rem;
+        width: 20rem;
+        transition-property: all;
+        transition-duration: 500ms;
+        transition-timing-function: linear;
+    }
+
+</style>
+<script>
+    let direction = 0.5
+    pos = {
+        left: 0,
+        top: 0,
+    }
+
+    function getSpeed(d) {
+        return {
+            x: Math.cos(d),
+            y: Math.sin(d),
+        }
+    }
+    
+    const catPic = document.getElementById("cat")
+    console.log(catPic.clientWidth)
+    console.log(catPic.clientHeight)
+    
+    function getRandomPosition() {
+        return {
+            x: (Math.random() * (window.innerWidth - catPic.clientWidth)),
+            y: (Math.random() * (window.innerHeight - catPic.clientHeight)),
+        }
+    }
+
+    setInterval(() => {
+        const newPosition = getRandomPosition()
+        let beat = new Audio('/boing.wav');
+        beat.play();
+        catPic.style.left = `${newPosition.x}px`
+        catPic.style.top = `${newPosition.y}px`
+    }, 4000 * Math.random());
+</script>
