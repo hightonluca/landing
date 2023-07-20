@@ -23,8 +23,12 @@
         transition-property: all;
         transition-duration: 500ms;
         transition-timing-function: linear;
+        cursor: pointer;
     }
 
+    img:active {
+        transform: scale(1.1);
+    }
 </style>
 <script>
     let direction = 0.5
@@ -51,11 +55,12 @@
         }
     }
 
-    setInterval(() => {
+    catPic.onclick = function() {
         const newPosition = getRandomPosition()
         let beat = new Audio('/boing.wav');
         beat.play();
+        cat
         catPic.style.left = `${newPosition.x}px`
         catPic.style.top = `${newPosition.y}px`
-    }, 4000 * Math.random());
+    }
 </script>
