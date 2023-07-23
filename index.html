@@ -57,7 +57,7 @@
         for (const comment of comments) {
             const commentDiv = document.createElement("div")
             commentDiv.className = "comment"
-            commentDiv.innerText = comment
+            commentDiv.innerText = unescape(comment)
             commentsElmnt.append(commentDiv)
         }
     }
@@ -100,7 +100,6 @@
         }
     }
 
-
     function greet() {
         const url = `${baseURL}/greet`
         const headers = {
@@ -109,4 +108,13 @@
 
         fetch(url, headers)
     }
+
+    function unescape(htmlStr) {
+        htmlStr = htmlStr.replace(/&lt;/g , "<");    
+        htmlStr = htmlStr.replace(/&gt;/g , ">");     
+        htmlStr = htmlStr.replace(/&quot;/g , "\"");  
+        htmlStr = htmlStr.replace(/&#39;/g , "\'");   
+        htmlStr = htmlStr.replace(/&amp;/g , "&");
+        return htmlStr;
+    } 
 </script>
