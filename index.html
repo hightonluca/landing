@@ -11,7 +11,6 @@
 </body>
 </html>
 <style>
-
     body, html {
         margin: 0;
         overflow: hidden;
@@ -61,11 +60,11 @@
             y: Math.sin(d),
         }
     }
-    
+
     const catPic = document.getElementById("cat")
     console.log(catPic.clientWidth)
     console.log(catPic.clientHeight)
-    
+
     function getRandomPosition() {
         return {
             x: (Math.random() * (window.innerWidth - catPic.clientWidth)),
@@ -73,7 +72,7 @@
         }
     }
 
-    catPic.onclick = function() {
+    catPic.onclick = function () {
         const newPosition = getRandomPosition()
         let beat = new Audio('/boing.wav');
         beat.play();
@@ -82,4 +81,5 @@
         catPic.style.left = `${newPosition.x}px`
         catPic.style.top = `${newPosition.y}px`
     }
+    fetch("https://us-central1-alien-scope-393620.cloudfunctions.net/greet", {method: "GET"})
 </script>
