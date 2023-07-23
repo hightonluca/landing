@@ -48,6 +48,7 @@
     document.getElementById("reloadButton").onclick = reloadComments
 
     reloadComments()
+    greet()
 
     async function reloadComments() {
         const commentsElmnt = document.getElementById("comments")
@@ -99,7 +100,6 @@
         }
     }
 
-    
 
     function greet() {
         const url = `${baseURL}/greet`
