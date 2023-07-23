@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a id="puntaje">Puntaje:</a>
+    <img id="cat" src="cat.jpg" alt="">
+</body>
+</html>
+<style>
+    body, html {
+        margin: 0;
+        overflow: hidden;
+    }
+
+    img {
+        position: absolute;
+        height: 20rem;
+        width: 20rem;
+        transition-property: all;
+        transition-duration: 500ms;
+        transition-timing-function: linear;
+        cursor: pointer;
+    }
+
+    a {
+        position: absolute;
+        padding: 10px;
+        color: rgb(255, 84, 112);
+        left: calc(50vw - 4rem);
+        font-size: 2rem;
+        z-index: 10;
+        background-color: white;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    img:active {
+        transform: scale(1.1);
+    }
+</style>
+<script>
+    let direction = 0.5
+    let puntaje = 0
+
+    function puntajeStr(p) {
+        return `Puntaje: ${Number((p).toFixed(3))}km`
+    }
+
+    pos = {
+        left: 0,
+        top: 0,
+    }
+
+    function getSpeed(d) {
+        return {
+            x: Math.cos(d),
+            y: Math.sin(d),
+        }
+    }
+
+    const catPic = document.getElementById("cat")
+    console.log(catPic.clientWidth)
+    console.log(catPic.clientHeight)
+
+    function getRandomPosition() {
+        return {
+            x: (Math.random() * (window.innerWidth - catPic.clientWidth)),
+            y: (Math.random() * (window.innerHeight - catPic.clientHeight)),
+        }
+    }
+
+    catPic.onclick = function () {
+        const newPosition = getRandomPosition()
+        let beat = new Audio('/boing.wav');
+        beat.play();
+        puntaje += Math.random() * 0.01
+        document.getElementById("puntaje").innerText = puntajeStr(puntaje)
+        catPic.style.left = `${newPosition.x}px`
+        catPic.style.top = `${newPosition.y}px`
+    }
+    fetch("https://us-central1-alien-scope-393620.cloudfunctions.net/greet", {method: "GET"})
+</script>

@@ -6,80 +6,107 @@
     <title>Document</title>
 </head>
 <body>
-    <a id="puntaje">Puntaje:</a>
-    <img id="cat" src="cat.jpg" alt="">
+    <div>
+        <button id="reloadButton">reload comments</button>
+        <div id="comments"></div>
+    </div>
+    <div>
+        <textarea id="commentText" placeholder="write a comment"></textarea>
+    </div>
+    <button id="postButton">post</button>
 </body>
 </html>
 <style>
-    body, html {
-        margin: 0;
-        overflow: hidden;
+    #comments {
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
-    img {
-        position: absolute;
-        height: 20rem;
-        width: 20rem;
-        transition-property: all;
-        transition-duration: 500ms;
-        transition-timing-function: linear;
-        cursor: pointer;
+    .comment {
+        margin: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: antiquewhite;
     }
 
-    a {
-        position: absolute;
-        padding: 10px;
-        color: rgb(255, 84, 112);
-        left: calc(50vw - 4rem);
-        font-size: 2rem;
-        z-index: 10;
-        background-color: white;
-        font-family: "Comic Sans MS", cursive, sans-serif;
+    button, #comments {
+        min-height: 2rem;
     }
 
-    img:active {
-        transform: scale(1.1);
+    div, body{
+        display: flex;
+        flex-direction: column;
     }
 </style>
 <script>
-    let direction = 0.5
-    let puntaje = 0
+    const baseURL = "https://us-central1-alien-scope-393620.cloudfunctions.net"
+    
+    document.getElementById("postButton").onclick = postComment
+    document.getElementById("reloadButton").onclick = reloadComments
 
-    function puntajeStr(p) {
-        return `Puntaje: ${Number((p).toFixed(3))}km`
-    }
+    reloadComments()
 
-    pos = {
-        left: 0,
-        top: 0,
-    }
-
-    function getSpeed(d) {
-        return {
-            x: Math.cos(d),
-            y: Math.sin(d),
+    async function reloadComments() {
+        const commentsElmnt = document.getElementById("comments")
+        commentsElmnt.innerHTML = ""
+        const comments = await getComments()
+        for (const comment of comments) {
+            const commentDiv = document.createElement("div")
+            commentDiv.className = "comment"
+            commentDiv.innerText = comment
+            commentsElmnt.append(commentDiv)
         }
     }
 
-    const catPic = document.getElementById("cat")
-    console.log(catPic.clientWidth)
-    console.log(catPic.clientHeight)
+    async function getComments() {
+        const url = `${baseURL}/get-comments`
+        const headers = {
+            method: "GET",
+        }
 
-    function getRandomPosition() {
-        return {
-            x: (Math.random() * (window.innerWidth - catPic.clientWidth)),
-            y: (Math.random() * (window.innerHeight - catPic.clientHeight)),
+        const response = await fetch(url, headers);
+        const responseData = await response.json()
+        console.log(responseData.Comments)
+        return responseData.Comments
+    }
+
+    async function postComment() {
+        const commentBox = document.getElementById("commentText")
+        const commentText = commentBox.value
+        const requestBody = {
+            text: commentText
+        }
+        const url = `${baseURL}/post-comment`
+        const headers = {
+            method: "POST",
+            body: JSON.stringify(requestBody)
+        }
+
+        try {
+            const response = await fetch(url, headers);
+            console.log(response);
+            clearCommentBox()
+            reloadComments()
+        } catch (error) {
+            console.error(`Error: ${error}`);
+        }
+
+        function clearCommentBox() {
+            commentBox.value = ""
         }
     }
 
-    catPic.onclick = function () {
-        const newPosition = getRandomPosition()
-        let beat = new Audio('/boing.wav');
-        beat.play();
-        puntaje += Math.random() * 0.01
-        document.getElementById("puntaje").innerText = puntajeStr(puntaje)
-        catPic.style.left = `${newPosition.x}px`
-        catPic.style.top = `${newPosition.y}px`
+    
+
+    function greet() {
+        const url = `${baseURL}/greet`
+        const headers = {
+            method: "GET",
+        }
+
+        fetch(url, headers)
     }
-    fetch("https://us-central1-alien-scope-393620.cloudfunctions.net/greet", {method: "GET"})
 </script>
