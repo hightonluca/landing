@@ -32,6 +32,25 @@
         background-color: antiquewhite;
     }
 
+    .red {
+        background-color: red;
+        color: aqua;
+        font-weight: bold;
+    }
+
+    .green {
+        background-color: green;
+        color: violet;
+        font-weight: bold;
+    }
+
+    .blue {
+        background-color: blue;
+        color: yellow;
+        font-weight: bold;
+    }
+    
+
     button, #comments {
         min-height: 2rem;
     }
@@ -54,9 +73,24 @@
         const commentsElmnt = document.getElementById("comments")
         commentsElmnt.innerHTML = ""
         const comments = await getComments()
+        console.log(comments)
         for (const comment of comments) {
+            const isRed = comment.includes("adminfuego")
+            const isBlue = comment.includes("adminagua")
+            const isGreen = comment.includes("admintierra")
+
             const commentDiv = document.createElement("div")
-            commentDiv.className = "comment"
+            commentDiv.className = "comment "
+            if (isRed) {
+                commentDiv.className += "red "
+            }
+            if (isBlue) {
+                commentDiv.className += "blue "
+            }
+            if (isGreen) {
+                commentDiv.className += "green "
+            }
+            
             commentDiv.innerText = unescape(comment)
             commentsElmnt.append(commentDiv)
         }
@@ -115,6 +149,9 @@
         htmlStr = htmlStr.replace(/&quot;/g , "\"");  
         htmlStr = htmlStr.replace(/&#39;/g , "\'");   
         htmlStr = htmlStr.replace(/&amp;/g , "&");
+        htmlStr = htmlStr.replace("adminfuego", "");
+        htmlStr = htmlStr.replace("adminagua", "");
+        htmlStr = htmlStr.replace("admintierra", "");
         return htmlStr;
     } 
 </script>
