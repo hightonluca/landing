@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comenten algo</title>
+</head>
+<body>
+    <div>
+        <button id="reloadButton">reload comments</button>
+        <div id="comments"></div>
+    </div>
+    <div>
+        <textarea id="commentText" placeholder="write a comment"></textarea>
+    </div>
+    <button id="postButton">post</button>
+</body>
+</html>
+<style>
+    #comments {
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .comment {
+        margin: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: antiquewhite;
+    }
+
+    .red {
+        background-color: red;
+        color: aqua;
+        font-weight: bold;
+    }
+
+    .green {
+        background-color: green;
+        color: violet;
+        font-weight: bold;
+    }
+
+    .blue {
+        background-color: blue;
+        color: yellow;
+        font-weight: bold;
+    }
+    
+
+    button, #comments {
+        min-height: 2rem;
+    }
+
+    div, body{
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+<script>
+    const baseURL = "https://us-central1-alien-scope-393620.cloudfunctions.net"
+    
+    document.getElementById("postButton").onclick = postComment
+    document.getElementById("reloadButton").onclick = reloadComments
+
+    reloadComments()
+    greet()
+
+    async function reloadComments() {
+        const commentsElmnt = document.getElementById("comments")
+        commentsElmnt.innerHTML = ""
+        const comments = await getComments()
+        console.log(comments)
+        for (const comment of comments) {
+            const isRed = comment.includes("adminfuego")
+            const isBlue = comment.includes("adminagua")
+            const isGreen = comment.includes("admintierra")
+
+            const commentDiv = document.createElement("div")
+            commentDiv.className = "comment "
+            if (isRed) {
+                commentDiv.className += "red "
+            }
+            if (isBlue) {
+                commentDiv.className += "blue "
+            }
+            if (isGreen) {
+                commentDiv.className += "green "
+            }
+            
+            commentDiv.innerText = unescape(comment)
+            commentsElmnt.append(commentDiv)
+        }
+    }
+
+    async function getComments() {
+        const url = `${baseURL}/get-comments`
+        const headers = {
+            method: "GET",
+        }
+
+        const response = await fetch(url, headers);
+        const responseData = await response.json()
+        console.log(responseData.Comments)
+        return responseData.Comments
+    }
+
+    async function postComment() {
+        const commentBox = document.getElementById("commentText")
+        const commentText = commentBox.value
+        const requestBody = {
+            text: commentText
+        }
+        const url = `${baseURL}/post-comment`
+        const headers = {
+            method: "POST",
+            body: JSON.stringify(requestBody)
+        }
+
+        try {
+            const response = await fetch(url, headers);
+            console.log(response);
+            clearCommentBox()
+            reloadComments()
+        } catch (error) {
+            console.error(`Error: ${error}`);
+        }
+
+        function clearCommentBox() {
+            commentBox.value = ""
+        }
+    }
+
+    function greet() {
+        const url = `${baseURL}/greet`
+        const headers = {
+            method: "GET",
+        }
+
+        fetch(url, headers)
+    }
+
+    function unescape(htmlStr) {
+        htmlStr = htmlStr.replace(/&lt;/g , "<");    
+        htmlStr = htmlStr.replace(/&gt;/g , ">");     
+        htmlStr = htmlStr.replace(/&quot;/g , "\"");  
+        htmlStr = htmlStr.replace(/&#39;/g , "\'");   
+        htmlStr = htmlStr.replace(/&amp;/g , "&");
+        htmlStr = htmlStr.replace("adminfuego", "");
+        htmlStr = htmlStr.replace("adminagua", "");
+        htmlStr = htmlStr.replace("admintierra", "");
+        return htmlStr;
+    } 
+</script>

@@ -1,157 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>comenten algo</title>
+    <title>highton.dev</title>
 </head>
 <body>
-    <div>
-        <button id="reloadButton">reload comments</button>
-        <div id="comments"></div>
+    <div class="main">
+        <h1>LUCA HIGHTON</h1>
+        <p>Buenos Aires, Argentina · +54 9 11 6259-0666 (WhatsApp) · hightonluca@gmail.com</p>
+        <hr>
+        <p>
+            Experienced Software Engineer with a four-year track record in full-stack development within international teams.
+            Skilled in spearheading the development of entire projects from inception to completion, as well as revitalizing
+            projects through the integration of new functionalities, performance enhancements, and cutting-edge technologies,
+            emphasizing continuous delivery in dynamic and fast-paced environments.
+        </p>
+        <h2>PROFESSIONAL EXPERIENCE</h2>
+        <hr>
+        <div class="leftright">
+            <span>Netrix LLC, remote</span>
+            <span>2022 - Present</span>
+        </div>
+        <p>Experience working with multiple projects for our client, OLX:</p>
+        <h3>FALCON (Incident Manager)</h3>
+        <p>
+            Made in Go (with Gin)
+        </p>
+        <p>
+            A slack Bot running on an EKS cluster. Multiple pods running in parallel.
+            Falcon has multiple responsibilities; it lets users interact with it through Slack, using commands and dynamically generated UI.
+            It provides users with information that's fetched from multiple sources (Jira, PagerDuty, OpsLevel) and processed for the users.
+            It alerts the user automatically when an incident under the user's responsibility is triggered in PagerDuty.
+            It also runs multiple synchronization tasks that vary in frequency; for example, it sends a weekly report for performance analysis purposes.
+        </p>
+
+        <h3>ORBIT</h3>
+        <p>
+            Uses Go and React. It consists of 2 parts:
+        </p>
+        <p>
+            A server running on EKS that synchronizes groups in OpsLevel (taken from a config file modified by the company) and provides an API to allow administrators to modify groups.
+            A web front-end made in React (with Tailwind) that consumes said API and allows users to: Visualize Groups, Modify Groups, add or remove team members, etc.
+        </p>
+
+        <h3>GLEANFUSE</h3>
+        <p>
+            Made in Go
+        </p>
+        <p>
+            Synchronizes multiple sources, like Dälek (OLX internal tool that analyzes source code for vulnerabilities), Jira, PagerDuty, calculates metrics, and sends them to OpsLevel to visualize them in a NewRelic dashboard. 
+        </p>
+
+        <h3>Service Shaper</h3>
+        <p>
+            Back-end in Go. Front-end in React DOM.
+        </p>
+        <p>
+            A website that allows developers from OLX to quickstart their projects by using different templates. It prompts the user to fill a custom form and automatically launches the required cloud resources, as well as the repository for the project.
+            After the developer creates a project, they can also track the status with this App.
+        </p>
+
+        <h3></h3>
+        <hr>
+
+        <div class="leftright">
+            <span>Minder S.A. Buenos Aires</span>
+            <span>2019 - 2021</span>
+        </div>
+        <h3></h3>
+
+        <p>Started working onsite. Transitioned to remote work during the COVID pandemic. Worked maintaining and expanding two mobile projects:</p>
+        
+        <h3>TusNotas (English: "Your Grades")</h3>
+        <p>
+            Mobile Application made in React Native and Expo.
+        </p>
+        <p>
+            Connects students, parents, and school personnel to communicate and to share information, including: Test grades, dates, and other important information. 
+        </p>
+
+        <h3>TuLegajo (English: "Your Docket")</h3>
+        <p>
+            Mobile Application made in React Native and Expo.
+        </p>
+        <p>
+            Connects employers and employees. It lets businesses automatically generate paychecks and to give important announcements to their employees.
+        </p>
+
+        <h3>SKILLS</h3>
+        <hr>
+        <p>C1 English, native Spanish</p>
+        <p>Go, Kubernetes, Javascript, Python, React, Tailwind, HTML, CSS, source control (Git), Agile Development. Experience with CI/CD pipelines (ArgoCD GitOps)</p>
     </div>
-    <div>
-        <textarea id="commentText" placeholder="write a comment"></textarea>
-    </div>
-    <button id="postButton">post</button>
 </body>
 </html>
 <style>
-    #comments {
-        margin: 5px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+    * {
+        font-family: 'Inter';
     }
 
-    .comment {
-        margin: 5px;
-        padding: 5px;
-        border-radius: 5px;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        background-color: antiquewhite;
+    body {
+        /* background-color: gainsboro; */
     }
 
-    .red {
-        background-color: red;
-        color: aqua;
-        font-weight: bold;
-    }
-
-    .green {
-        background-color: green;
-        color: violet;
-        font-weight: bold;
-    }
-
-    .blue {
-        background-color: blue;
-        color: yellow;
-        font-weight: bold;
-    }
-    
-
-    button, #comments {
-        min-height: 2rem;
-    }
-
-    div, body{
+    .main {
         display: flex;
         flex-direction: column;
+        max-width: 50rem;
+        margin: auto;
+        background-color: white;
+    }
+
+    h1, h2, h3 {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        margin: 0.2rem;
+        margin-top: 1.5rem;
+    }
+
+    hr {
+        border-top: 1px black solid;
+        width: 100%;
+    }
+    
+    p {
+        margin: 0;
+        text-align: center;
+    }
+
+    .leftright {
+        display: flex;
+        justify-content: space-between;
     }
 </style>
-<script>
-    const baseURL = "https://us-central1-alien-scope-393620.cloudfunctions.net"
-    
-    document.getElementById("postButton").onclick = postComment
-    document.getElementById("reloadButton").onclick = reloadComments
-
-    reloadComments()
-    greet()
-
-    async function reloadComments() {
-        const commentsElmnt = document.getElementById("comments")
-        commentsElmnt.innerHTML = ""
-        const comments = await getComments()
-        console.log(comments)
-        for (const comment of comments) {
-            const isRed = comment.includes("adminfuego")
-            const isBlue = comment.includes("adminagua")
-            const isGreen = comment.includes("admintierra")
-
-            const commentDiv = document.createElement("div")
-            commentDiv.className = "comment "
-            if (isRed) {
-                commentDiv.className += "red "
-            }
-            if (isBlue) {
-                commentDiv.className += "blue "
-            }
-            if (isGreen) {
-                commentDiv.className += "green "
-            }
-            
-            commentDiv.innerText = unescape(comment)
-            commentsElmnt.append(commentDiv)
-        }
-    }
-
-    async function getComments() {
-        const url = `${baseURL}/get-comments`
-        const headers = {
-            method: "GET",
-        }
-
-        const response = await fetch(url, headers);
-        const responseData = await response.json()
-        console.log(responseData.Comments)
-        return responseData.Comments
-    }
-
-    async function postComment() {
-        const commentBox = document.getElementById("commentText")
-        const commentText = commentBox.value
-        const requestBody = {
-            text: commentText
-        }
-        const url = `${baseURL}/post-comment`
-        const headers = {
-            method: "POST",
-            body: JSON.stringify(requestBody)
-        }
-
-        try {
-            const response = await fetch(url, headers);
-            console.log(response);
-            clearCommentBox()
-            reloadComments()
-        } catch (error) {
-            console.error(`Error: ${error}`);
-        }
-
-        function clearCommentBox() {
-            commentBox.value = ""
-        }
-    }
-
-    function greet() {
-        const url = `${baseURL}/greet`
-        const headers = {
-            method: "GET",
-        }
-
-        fetch(url, headers)
-    }
-
-    function unescape(htmlStr) {
-        htmlStr = htmlStr.replace(/&lt;/g , "<");    
-        htmlStr = htmlStr.replace(/&gt;/g , ">");     
-        htmlStr = htmlStr.replace(/&quot;/g , "\"");  
-        htmlStr = htmlStr.replace(/&#39;/g , "\'");   
-        htmlStr = htmlStr.replace(/&amp;/g , "&");
-        htmlStr = htmlStr.replace("adminfuego", "");
-        htmlStr = htmlStr.replace("adminagua", "");
-        htmlStr = htmlStr.replace("admintierra", "");
-        return htmlStr;
-    } 
-</script>
