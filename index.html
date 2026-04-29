@@ -11,6 +11,11 @@
     <button class="download-btn" onclick="window.print()">Download PDF</button>
     <div class="container">
         <header>
+            <div class="qr-codes">
+                <p class="qr-note"><span id="gen-date"></span></p>
+                <img class="qr-svg" src="qr.svg" alt="highton.dev QR code">
+                <p class="qr-note">scan for latest :)</p>
+            </div>
             <h1>Luca Highton</h1>
             <a href="https://www.linkedin.com/in/luca-highton/" class="link">linkedin.com/in/luca-highton</a>
             <p class="bio">Software Engineer with 4 years of full-stack experience. Delivered end-to-end projects and improved existing systems with new features and performance gains in fast-paced, continuous delivery environments.</p>
@@ -76,16 +81,6 @@
             <h2>SKILLS</h2>
             <div class="skills-grid">
                 <div class="skill-group">
-                    <strong>Frontend</strong>
-                    <ul>
-                        <li>JavaScript</li>
-                        <li>React</li>
-                        <li>React Native</li>
-                        <li>Tailwind</li>
-                        <li>HTML / CSS</li>
-                    </ul>
-                </div>
-                <div class="skill-group">
                     <strong>Backend</strong>
                     <ul>
                         <li>Go</li>
@@ -96,11 +91,29 @@
                     <strong>Cloud / Infra</strong>
                     <ul>
                         <li>AWS DynamoDB</li>
-                        <li>AWS EKS</li>
                         <li>AWS S3</li>
-                        <li>Kubernetes</li>
                         <li>ArgoCD GitOps</li>
                         <li>GitLab CI</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <strong>Data Storage</strong>
+                    <ul>
+                        <li>SQL</li>
+                        <li>NoSQL</li>
+                        <li>Redis</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <strong>Frontend</strong>
+                    <ul>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>React Native</li>
+                        <li>Tailwind</li>
+                        <li>HTML / CSS</li>
+                        <li>RTL</li>
+                        <li>Jest</li>
                     </ul>
                 </div>
                 <div class="skill-group">
@@ -108,6 +121,7 @@
                     <ul>
                         <li>Git</li>
                         <li>Agile</li>
+                        <li>Unit testing</li>
                     </ul>
                 </div>
             </div>
@@ -163,6 +177,8 @@
     }
 
     /* ── Header ─────────────────────────────── */
+
+    .qr-codes { display: none; }
 
     header {
         margin-bottom: 3.5rem;
@@ -287,7 +303,7 @@
 
     .skills-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 1.5rem;
     }
 
@@ -375,5 +391,45 @@
         .skill-group ul li { line-height: 1.5; }
 
         .languages-list { gap: 1rem; }
+
+        header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            column-gap: 1rem;
+            align-items: start;
+        }
+
+        header h1,
+        header .link,
+        header .bio { grid-column: 1; }
+
+        .qr-codes {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            grid-column: 2;
+            grid-row: 1 / 5;
+            width: 72px;
+        }
+
+        .qr-svg {
+            width: 72px;
+            height: 72px;
+            margin-right: -5px;
+        }
+
+        .qr-note {
+            font-size: 8px;
+            color: #888;
+            line-height: 1.5;
+            margin-top: 3px;
+            white-space: nowrap;
+            text-transform: lowercase;
+        }
     }
 </style>
+<script>
+    const d = new Date();
+    document.getElementById('gen-date').textContent =
+        d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+</script>
