@@ -1,204 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>highton.dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>LUCA HIGHTON</h1>
-    <div class="main">
-        <a href="https://www.linkedin.com/in/luca-highton/">
-            linkedin.com/in/luca-highton
-        </a>
-        <hr />
-        <p>
-            Software Engineer with 4 years of full-stack experience. Delivered end-to-end projects and improved existing
-            systems with new features and performance gains in fast-paced, continuous delivery environments.
-        </p>
-        <h2>PROFESSIONAL EXPERIENCE</h2>
-        <hr>
-        <div class="leftright">
-            <span>Netrix LLC, remote</span>
-            <span>2022 - Present</span>
-        </div>
-        <p>Experience working with multiple projects for our client, OLX:</p>
-        <h3>FALCON (Incident Manager)</h3>
-        <p>
-            Made in Go (with Gin)
-        </p>
-        <p>
-            A slack Bot running on an EKS cluster. Multiple pods running in parallel.
-            Falcon has multiple responsibilities; it lets users interact with it through Slack, using commands and
-            dynamically generated UI.
-            It provides users with information that's fetched from multiple sources (Jira, PagerDuty, OpsLevel) and
-            processed for the users.
-            It alerts the user automatically when an incident under the user's responsibility is triggered in PagerDuty.
-            It also runs multiple synchronization tasks that vary in frequency; for example, it sends a weekly report
-            for performance analysis purposes.
-        </p>
+    <div class="container">
+        <header>
+            <h1>LUCA HIGHTON</h1>
+            <a href="https://www.linkedin.com/in/luca-highton/" class="link">linkedin.com/in/luca-highton</a>
+            <p class="bio">Software Engineer with 4 years of full-stack experience. Delivered end-to-end projects and improved existing systems with new features and performance gains in fast-paced, continuous delivery environments.</p>
+        </header>
 
-        <h3>ORBIT</h3>
-        <p>
-            Uses Go and React. It consists of 2 parts:
-        </p>
-        <p>
-            A server running on EKS that synchronizes groups in OpsLevel (taken from a config file modified by the
-            company) and provides an API to allow administrators to modify groups.
-            A web front-end made in React (with Tailwind) that consumes said API and allows users to: Visualize Groups,
-            Modify Groups, add or remove team members, etc.
-        </p>
+        <section>
+            <h2>PROFESSIONAL EXPERIENCE</h2>
 
-        <h3>GLEANFUSE</h3>
-        <p>
-            Made in Go
-        </p>
-        <p>
-            Synchronizes multiple sources, like Dälek (OLX internal tool that analyzes source code for vulnerabilities),
-            Jira, PagerDuty, calculates metrics, and sends them to OpsLevel to visualize them in a NewRelic dashboard.
-        </p>
-
-        <h3>Service Shaper</h3>
-        <p>
-            Back-end in Go. Front-end in React DOM.
-        </p>
-        <p>
-            A website that allows developers from OLX to quickstart their projects by using different templates. It
-            prompts the user to fill a custom form and automatically launches the required cloud resources, as well as
-            the repository for the project.
-            After the developer creates a project, they can also track the status with this App.
-        </p>
-
-        <h3></h3>
-        <hr>
-
-        <div class="leftright">
-            <span>Minder S.A. Buenos Aires</span>
-            <span>2019 - 2021</span>
-        </div>
-        <h3></h3>
-
-        <p>Started working onsite. Transitioned to remote work during the COVID pandemic. Worked maintaining and
-            expanding two mobile projects:</p>
-
-        <h3>TusNotas (English: "Your Grades")</h3>
-        <p>
-            Mobile Application made in React Native and Expo.
-        </p>
-        <p>
-            Connects students, parents, and school personnel to communicate and to share information, including: Test
-            grades, dates, and other important information.
-        </p>
-
-        <h3>TuLegajo (English: "Your Docket")</h3>
-        <p>
-            Mobile Application made in React Native and Expo.
-        </p>
-        <p>
-            Connects employers and employees. It lets businesses automatically generate paychecks and to give important
-            announcements to their employees.
-        </p>
-
-        <h3>LANGUAGES</h3>
-        <hr>
-        <p>C1 English, native Spanish</p>
-
-        <h3>SKILLS</h3>
-        <hr>
-        <div class="skills-grid">
-            <div>
-                <strong>Frontend</strong>
-                <ul>
-                    <li>JavaScript</li>
-                    <li>React</li>
-                    <li>React Native</li>
-                    <li>Tailwind</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                </ul>
+            <div class="employer">
+                <span class="employer-name">Netrix LLC, remote</span>
+                <span class="meta">2022 – Present</span>
             </div>
-            <div>
-                <strong>Backend</strong>
-                <ul>
-                    <li>Go</li>
-                    <li>Python</li>
-                </ul>
+            <p class="employer-context">Experience working with multiple projects for our client, OLX:</p>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>FALCON</h3>
+                    <span class="meta">Incident Manager · Go (Gin)</span>
+                    <p>A Slack bot running on an EKS cluster with multiple pods. Lets users interact through Slack commands and dynamically generated UI. Fetches and processes data from Jira, PagerDuty, and OpsLevel. Alerts users on triggered incidents and runs scheduled sync tasks including weekly performance reports.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>ORBIT</h3>
+                    <span class="meta">Go · React · Tailwind</span>
+                    <p>Two-part system: an EKS server that synchronizes OpsLevel groups from a config file and exposes an admin API, and a React front-end for visualizing and modifying groups and managing team members.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>GLEANFUSE</h3>
+                    <span class="meta">Go</span>
+                    <p>Synchronizes sources including Dälek (OLX's internal vulnerability scanner), Jira, and PagerDuty — calculates metrics and sends them to OpsLevel for visualization in a NewRelic dashboard.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>SERVICE SHAPER</h3>
+                    <span class="meta">Go · React DOM</span>
+                    <p>A website for OLX developers to quickstart projects using templates. Guides users through a custom form, automatically provisions cloud resources and repositories, and lets developers track project status post-creation.</p>
+                </div>
             </div>
-            <div>
-                <strong>Cloud/Infra</strong>
-                <ul>
-                    <li>AWS DynamoDB</li>
-                    <li>AWS EKS</li>
-                    <li>AWS S3</li>
-                    <li>Kubernetes</li>
-                    <li>CI/CD (ArgoCD GitOps)</li>
-                    <li>GitLab CI</li>
-                </ul>
+
+            <div class="employer">
+                <span class="employer-name">Minder S.A., Buenos Aires</span>
+                <span class="meta">2019 – 2021</span>
             </div>
-            <div>
-                <strong>Misc</strong>
-                <ul>
-                    <li>Git</li>
-                    <li>Agile</li>
-                </ul>
+            <p class="employer-context">Started onsite, transitioned remote during COVID. Maintained and expanded two mobile projects:</p>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>TUSNOTAS</h3>
+                    <span class="meta">Your Grades · React Native · Expo</span>
+                    <p>Mobile app connecting students, parents, and school personnel to share test grades, important dates, and school announcements.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>TULEGAJO</h3>
+                    <span class="meta">Your Docket · React Native · Expo</span>
+                    <p>Mobile app connecting employers and employees. Automates paycheck generation and delivers company-wide announcements to staff.</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section>
+            <h2>LANGUAGES</h2>
+            <p>C1 English &nbsp;·&nbsp; Native Spanish</p>
+        </section>
+
+        <section>
+            <h2>SKILLS</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <strong>Frontend</strong>
+                    <ul>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>React Native</li>
+                        <li>Tailwind</li>
+                        <li>HTML / CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <strong>Backend</strong>
+                    <ul>
+                        <li>Go</li>
+                        <li>Python</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <strong>Cloud / Infra</strong>
+                    <ul>
+                        <li>AWS DynamoDB</li>
+                        <li>AWS EKS</li>
+                        <li>AWS S3</li>
+                        <li>Kubernetes</li>
+                        <li>ArgoCD GitOps</li>
+                        <li>GitLab CI</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <strong>Misc</strong>
+                    <ul>
+                        <li>Git</li>
+                        <li>Agile</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
-
 </html>
+
 <style>
-    * {
-        font-family: 'Inter';
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --text:        #111111;
+        --gray:        #888888;
+        --border:      #e2e2e2;
+        --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 0 0 1px #e2e2e2;
+
+        --size-name:   2.75rem;
+        --size-body:   0.95rem;
+        --size-small:  0.8rem;
     }
 
     body {
-        padding-bottom: 25vh;
+        background: #fff;
+        color: var(--text);
+        font-family: 'Inter', sans-serif;
+        font-size: var(--size-body);
+        line-height: 1.6;
+        padding: 4rem 2rem 10rem;
     }
 
-    .main {
-        display: flex;
-        flex-direction: column;
-        max-width: 50rem;
-        margin: auto;
-        background-color: white;
+    .container {
+        max-width: 54rem;
+        margin: 0 auto;
     }
+
+    /* ── Header ─────────────────────────────── */
+
+    header {
+        margin-bottom: 3.5rem;
+    }
+
+    h1 {
+        font-size: var(--size-name);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        margin-bottom: 0.6rem;
+    }
+
+    .link {
+        display: inline-block;
+        font-size: var(--size-small);
+        color: var(--gray);
+        text-decoration: none;
+        margin-bottom: 1.5rem;
+    }
+
+    .link:hover {
+        color: var(--text);
+    }
+
+    .bio {
+        max-width: 40rem;
+        color: var(--text);
+    }
+
+    /* ── Sections ────────────────────────────── */
+
+    section {
+        margin-bottom: 2.75rem;
+    }
+
+    h2 {
+        font-size: var(--size-small);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gray);
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    /* ── Employer rows ───────────────────────── */
+
+    .employer {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .employer:first-of-type {
+        margin-top: 0;
+    }
+
+    .employer-name {
+        font-weight: 600;
+    }
+
+    .employer-context {
+        font-size: var(--size-small);
+        color: var(--gray);
+        margin-bottom: 1rem;
+    }
+
+    /* ── Project cards ───────────────────────── */
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-card {
+        padding: 1rem 1.1rem;
+        border-radius: 5px;
+        box-shadow: var(--card-shadow);
+    }
+
+    h3 {
+        font-size: var(--size-body);
+        font-weight: 600;
+        margin-bottom: 0.15rem;
+    }
+
+    .meta {
+        display: block;
+        font-size: var(--size-small);
+        color: var(--gray);
+        margin-bottom: 0.6rem;
+    }
+
+    .project-card p {
+        line-height: 1.55;
+    }
+
+    /* ── Skills ──────────────────────────────── */
 
     .skills-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
-    .skills-grid p {
-        margin-top: 0.25rem;
+    .skill-group strong {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
     }
 
-    h1,
-    h2,
-    h3 {
-        width: 100%;
-        text-align: center;
+    .skill-group ul {
+        list-style: none;
         padding: 0;
-        margin: 0.2rem;
-        margin-top: 1.5rem;
     }
 
-    hr {
-        border-top: 1px black solid;
-        width: 100%;
-    }
-
-    p {
-        margin: 0;
-        text-align: center;
-    }
-
-    .leftright {
-        display: flex;
-        justify-content: space-between;
+    .skill-group ul li {
+        font-size: var(--size-small);
+        color: var(--gray);
+        line-height: 1.9;
     }
 </style>
