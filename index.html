@@ -102,11 +102,50 @@
             announcements to their employees.
         </p>
 
-        <h3>SKILLS</h3>
+        <h3>LANGUAGES</h3>
         <hr>
         <p>C1 English, native Spanish</p>
-        <p>Go, Kubernetes, Javascript, Python, React, Tailwind, HTML, CSS, source control (Git), Agile Development.
-            Experience with CI/CD pipelines (ArgoCD GitOps)</p>
+
+        <h3>SKILLS</h3>
+        <hr>
+        <div class="skills-grid">
+            <div>
+                <strong>Frontend</strong>
+                <ul>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>React Native</li>
+                    <li>Tailwind</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                </ul>
+            </div>
+            <div>
+                <strong>Backend</strong>
+                <ul>
+                    <li>Go</li>
+                    <li>Python</li>
+                </ul>
+            </div>
+            <div>
+                <strong>Cloud/Infra</strong>
+                <ul>
+                    <li>AWS DynamoDB</li>
+                    <li>AWS EKS</li>
+                    <li>AWS S3</li>
+                    <li>Kubernetes</li>
+                    <li>CI/CD (ArgoCD GitOps)</li>
+                    <li>GitLab CI</li>
+                </ul>
+            </div>
+            <div>
+                <strong>Misc</strong>
+                <ul>
+                    <li>Git</li>
+                    <li>Agile</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 
@@ -126,6 +165,16 @@
         max-width: 50rem;
         margin: auto;
         background-color: white;
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    .skills-grid p {
+        margin-top: 0.25rem;
     }
 
     h1,
