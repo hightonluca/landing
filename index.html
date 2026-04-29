@@ -18,7 +18,7 @@
             </div>
             <h1>Luca Highton</h1>
             <a href="https://www.linkedin.com/in/luca-highton/" class="link">linkedin.com/in/luca-highton</a>
-            <p class="bio">Software Engineer with 4 years of full-stack experience. Delivered end-to-end projects and improved existing systems with new features and performance gains in fast-paced, continuous delivery environments.</p>
+            <p class="bio">Software Engineer with 8+ years of experience. Delivered end-to-end projects and improved existing systems with new features and performance gains in fast-paced, continuous delivery environments.</p>
         </header>
 
         <section>
@@ -33,7 +33,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <h3>Orbit</h3>
-                    <span class="meta">Go · React · Tailwind</span>
+                    <span class="meta">Go + React</span>
                     <p>A two-part system: a sync service that periodically pushes organization structure to multiple platforms; and a web project consisting of a Go API backend and a React frontend for managing users, groups, badges, Slack channels, and team membership, with audit logging and org tree visualization.</p>
                 </div>
                 
@@ -45,13 +45,13 @@
                 
                 <div class="project-card">
                     <h3>Falcon</h3>
-                    <span class="meta">Incident Manager · Go (Gin)</span>
+                    <span class="meta">Go + Slack Block Kit</span>
                     <p>Go-based incident response bot deployed on EKS, integrating PagerDuty, Jira, Confluence, and StatusPage. Built with Go/Gin, Kubernetes CronJobs for scheduled reporting, and AWS (SES, SQS, S3) for notifications and storage.</p>
                 </div>
 
                 <div class="project-card">
-                    <h3>SERVICE SHAPER</h3>
-                    <span class="meta">Go · React DOM</span>
+                    <h3>Service Shaper</h3>
+                    <span class="meta">React</span>
                     <p>A self-service platform for OLX developers to create and manage cloud microservices. Bootstrap new projects from templates or adopt existing repos — automatically provisioning cloud resources, repositories, and integrations — then track and manage services post-creation.</p>
                 </div>
             </div>
@@ -205,7 +205,7 @@
     }
 
     .bio {
-        max-width: 40rem;
+        max-width: 54rem;
         color: var(--text);
     }
 
@@ -302,8 +302,8 @@
     /* ── Skills ──────────────────────────────── */
 
     .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        display: flex;
+        justify-content: space-between;
         gap: 1.5rem;
     }
 
