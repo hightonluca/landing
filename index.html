@@ -26,27 +26,27 @@
 
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>FALCON</h3>
-                    <span class="meta">Incident Manager · Go (Gin)</span>
-                    <p>A Slack bot running on an EKS cluster with multiple pods. Lets users interact through Slack commands and dynamically generated UI. Fetches and processes data from Jira, PagerDuty, and OpsLevel. Alerts users on triggered incidents and runs scheduled sync tasks including weekly performance reports.</p>
-                </div>
-
-                <div class="project-card">
-                    <h3>ORBIT</h3>
+                    <h3>Orbit</h3>
                     <span class="meta">Go · React · Tailwind</span>
-                    <p>Two-part system: an EKS server that synchronizes OpsLevel groups from a config file and exposes an admin API, and a React front-end for visualizing and modifying groups and managing team members.</p>
+                    <p>A two-part system: a sync service that periodically pushes organization structure to multiple platforms; and a web project consisting of a Go API backend and a React frontend for managing users, groups, badges, Slack channels, and team membership, with audit logging and org tree visualization.</p>
                 </div>
-
+                
                 <div class="project-card">
-                    <h3>GLEANFUSE</h3>
+                    <h3>Gleanfuse/PDMT</h3>
                     <span class="meta">Go</span>
-                    <p>Synchronizes sources including Dälek (OLX's internal vulnerability scanner), Jira, and PagerDuty — calculates metrics and sends them to OpsLevel for visualization in a NewRelic dashboard.</p>
+                    <p>Aggregates KPIs from sources including Dalek (OLX's internal SLA tracker), Jira, PagerDuty, Incident.io, and NewRelic — normalizes them by team and time period, then publishes results to Google Sheets, Confluence, NewRelic, OpsLevel, and Slack.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Falcon</h3>
+                    <span class="meta">Incident Manager · Go (Gin)</span>
+                    <p>Go-based incident response bot deployed on EKS, integrating PagerDuty, Jira, Confluence, and StatusPage. Built with Go/Gin, Kubernetes CronJobs for scheduled reporting, and AWS (SES, SQS, S3) for notifications and storage.</p>
                 </div>
 
                 <div class="project-card">
                     <h3>SERVICE SHAPER</h3>
                     <span class="meta">Go · React DOM</span>
-                    <p>A website for OLX developers to quickstart projects using templates. Guides users through a custom form, automatically provisions cloud resources and repositories, and lets developers track project status post-creation.</p>
+                    <p>A self-service platform for OLX developers to create and manage cloud microservices. Bootstrap new projects from templates or adopt existing repos — automatically provisioning cloud resources, repositories, and integrations — then track and manage services post-creation.</p>
                 </div>
             </div>
 
@@ -58,22 +58,17 @@
 
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>TUSNOTAS</h3>
-                    <span class="meta">Your Grades · React Native · Expo</span>
+                    <h3>TusNotas</h3>
+                    <span class="meta">React Native · Expo</span>
                     <p>Mobile app connecting students, parents, and school personnel to share test grades, important dates, and school announcements.</p>
                 </div>
 
                 <div class="project-card">
-                    <h3>TULEGAJO</h3>
-                    <span class="meta">Your Docket · React Native · Expo</span>
+                    <h3>TuLegajo</h3>
+                    <span class="meta">React Native · Expo</span>
                     <p>Mobile app connecting employers and employees. Automates paycheck generation and delivers company-wide announcements to staff.</p>
                 </div>
             </div>
-        </section>
-
-        <section>
-            <h2>LANGUAGES</h2>
-            <p>C1 English &nbsp;·&nbsp; Native Spanish</p>
         </section>
 
         <section>
@@ -113,6 +108,20 @@
                         <li>Git</li>
                         <li>Agile</li>
                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>LANGUAGES</h2>
+            <div class="languages-list">
+                <div class="language-item">
+                    <strong>Spanish</strong>
+                    <span class="meta">Native</span>
+                </div>
+                <div class="language-item">
+                    <strong>English</strong>
+                    <span class="meta">C1</span>
                 </div>
             </div>
         </section>
@@ -254,6 +263,23 @@
 
     .project-card p {
         line-height: 1.55;
+    }
+
+    /* ── Languages ──────────────────────────────── */
+
+    .languages-list {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .language-item strong {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.15rem;
+    }
+
+    .language-item .meta {
+        margin-bottom: 0;
     }
 
     /* ── Skills ──────────────────────────────── */
